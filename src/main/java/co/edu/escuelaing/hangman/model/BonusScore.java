@@ -1,6 +1,8 @@
 package co.edu.escuelaing.hangman.model;
 
 public class BonusScore implements GameScore{
+
+    private int puntaje = 0;
     /**
      *
      * @pre correctCount and incorrectCount are not negative
@@ -12,7 +14,13 @@ public class BonusScore implements GameScore{
      */
     @Override
     public int calculateScore(int correctCount, int incorrectCount) throws GameScoreExceptions {
-        return 0;
+        for (int i = 0; i < correctCount; i++){
+            puntaje = puntaje + 10;
+        }
+        for (int i = 0; i < incorrectCount; i++){
+            puntaje = puntaje-5;
+        }
+        return puntaje;
     }
 }
 

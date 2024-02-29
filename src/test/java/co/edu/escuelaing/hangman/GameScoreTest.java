@@ -28,7 +28,7 @@ public class GameScoreTest {
      * Equivalence Class 4: Minimum Score (0 points).
      * Equivalence Class 5: Maximum Score (500 points).
      */
-    private GameScore powerScore = new PowerScore();
+    private GameScore powerScore = new PowerBonusScore();
 
 
     /*OriginalScore*/
@@ -81,7 +81,7 @@ public class GameScoreTest {
     @Test
     public void shouldReturnZeroForOneCorrectLettersAndTwoIncorrectLatter() throws GameScoreExceptions{
         int ans = bonusScore.calculateScore(1,2);
-        assertEquals(15, ans);
+        assertEquals(0, ans);
     }
 
     @Test
@@ -101,14 +101,29 @@ public class GameScoreTest {
     }
 
     @Test
-    public void shouldReturnThirtyForTwoCorrectLetters() throws GameScoreExceptions{
+    public void shouldReturntwentyfiveForTwoCorrectLetters() throws GameScoreExceptions{
         int ans = powerScore.calculateScore(2,0);
-        assertEquals(30, ans);
+        assertEquals(25, ans);
     }
 
     @Test
-    public void shouldReturnTwntytwoForTwoCorrectLettersAndOneIncorrectLatter() throws GameScoreExceptions{
+    public void shouldReturnSevenTeenForTwoCorrectLettersAndOneIncorrectLatter() throws GameScoreExceptions{
         int ans = powerScore.calculateScore(2,1);
-        assertEquals(22, ans);
+        assertEquals(17, ans);
+    }
+
+    @Test
+    public void shouldReturnMaxResultForTwoCorrectLettersAndOneIncorrectLatter() throws GameScoreExceptions{
+        int ans = powerScore.calculateScore(5,0);
+        assertEquals(500, ans);
+    }
+
+    @Test
+    public void shouldReturnNegativeResultForTwoCorrectLettersAndOneIncorrectLatter() throws GameScoreExceptions{
+        try{
+            int ans = powerScore.calculateScore(0,1);
+        } catch (GameScoreExceptions e){
+            assertEquals(GameScoreExceptions.NEGATIVE_SCORE, e.getMessage());
+        };
     }
 }

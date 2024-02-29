@@ -1,6 +1,9 @@
 package co.edu.escuelaing.hangman.model;
+import java.lang.*;
 
-public class PowerScore implements GameScore{
+public class PowerBonusScore implements GameScore{
+
+    private int puntaje = 0;
     /**
      *
      * @pre correctCount and incorrectCount are not negative
@@ -12,6 +15,13 @@ public class PowerScore implements GameScore{
      */
     @Override
     public int calculateScore(int correctCount, int incorrectCount) throws GameScoreExceptions {
-        return 0;
+        int pCorrect = (int)Math.pow(5, correctCount);
+        if (pCorrect == 1){
+            pCorrect = 0;
+        }
+        puntaje = puntaje + pCorrect - (incorrectCount*(8));
+        if (puntaje > 500) {
+            return 500;
+        }return puntaje;
     }
 }
