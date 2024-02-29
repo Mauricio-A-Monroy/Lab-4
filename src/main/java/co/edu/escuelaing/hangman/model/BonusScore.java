@@ -11,7 +11,9 @@ public class BonusScore implements GameScore{
      * @pos The minimum score returned is 0.
      */
     @Override
-    public int calculateScore(int correctCount, int incorrectCount) {
+    public int calculateScore(int correctCount, int incorrectCount) throws GameScoreExceptions {
         return 0;
     }
 }
+
+

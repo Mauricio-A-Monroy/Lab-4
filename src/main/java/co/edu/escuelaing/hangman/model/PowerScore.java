@@ -11,7 +11,7 @@ public class PowerScore implements GameScore{
      * @pos The score returnet between in 0 and 500.
      */
     @Override
-    public int calculateScore(int correctCount, int incorrectCount) {
+    public int calculateScore(int correctCount, int incorrectCount) throws GameScoreExceptions {
         return 0;
     }
 }
